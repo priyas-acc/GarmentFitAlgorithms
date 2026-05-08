@@ -1,7 +1,7 @@
 # GarmentFitAlgorithms
 Waist visualization, data sanitization, and best‑fit garment search
 
-## Contents
+# Contents
  # Question 1: Waist Circumference Visualization #
 
 This project computes waist circumference from a 3D human body mesh using mesh slicing techniques.
