@@ -2,35 +2,75 @@
 Waist visualization, data sanitization, and best‑fit garment search
 
 ## Contents
-- **Question 1: Waist Circumference Visualization**
-  - Notebook: `Question 1.ipynb`
-  - Implements a function (`calculate_circumference`) that:
-    - Intersects a 3D mesh at a given Z‑height
-    - Collects intersection points and builds a convex hull
-    - Calculates the loop circumference from hull edges
-  - Includes a visualization function (`visualize_mesh_with_slice`) that overlays the slice on the 3D mesh
-  - Demonstrates outputs at multiple Z‑levels and prints circumference values
-  - Final output: Waist circumference at a chosen height with a plotted slice (`waist_slice.png`)
+ **Question 1: Waist Circumference Visualization**
 
-- **Question 2: Data Sanitizer Engine**
-  - Notebook: `Question 2.ipynb`
-  - Defines a `DataSanitizer` class with three main methods:
-    - **normalize_units()** → Converts measurements to centimeters (values ≤ 100 assumed inches, multiplied by 2.54; larger values treated as already in cm)
-    - **validate_proportions()** → Checks logical consistency of measurements (e.g., waist not larger than height, chest ≥ 30% of height, hip within 40–70% of height)
-    - **estimate_missing()** → Fills missing values based on height (e.g., ArmLength = 35% of height, LegLength = 50% of height)
-  - Demonstrates usage with a sample dataset (`user_data`) and prints:
-    - Normalized values
-    - Validation issues
-    - Final dataset with estimated missing values
+This project computes waist circumference from a 3D human body mesh using mesh slicing techniques.
+
+## Features
+
+- Loads a 3D `.obj` human mesh
+- Slices the mesh at a selected waist height
+- Extracts contour loops from the mesh intersection
+- Computes waist circumference
+- Visualizes the waist slice on the 3D body mesh
+- Saves the final visualization as a PNG image (`waist_slice.png`)
+
+## Technologies
+
+- Python
+- Trimesh
+- NumPy
+- Matplotlib
+
+## Output
+
+- Waist circumference value
+- 3D visualization with highlighted waist contour
+- Output image file: `waist_slice.png`
+
+# Question 2: Measurement Normalization & Outlier Detection Engine
+
+This project implements a data sanitization system for user body measurements.
+
+## Features
+
+- Converts measurements to centimeters
+- Detects unrealistic body proportions
+- Flags possible outliers
+- Estimates missing measurements using body ratio constants
+
+## Technologies
+
+- Python
+- Object-Oriented Programming (OOP)
+
+## Example Output
+
+- Normalized measurements
+- Validation issues
+- Estimated missing values
       
-- **Question 3: Best-Fit Multi-Constraint Search Algorithm**
-  - Notebook: `Question 3.ipynb`
-  - Creates a synthetic garment database (`garments_db`) with random Chest, Waist, and Hip values
-  - Defines:
-    - **penalty()** → Returns ∞ if garment is smaller than user measurement (unwearable), otherwise difference
-    - **fit_score()** → Combines penalties with weighted scoring (Chest penalty ×2, Waist ×1, Hip ×1) and outputs a confidence score
-  - Performs a linear scan across garments, calculates scores, and selects the **Top 3 best fits**
-  - Prints garment IDs and fit confidence values
+ **Question 3: Best-Fit Multi-Constraint Search Algorithm**
+  This project implements a garment recommendation system that identifies the Top 3 best-fitting garments based on user body measurements.
+
+## Features
+
+- Creates a synthetic garment database with Chest, Waist, and Hip measurements
+- Applies asymmetric penalty logic for garment fitting
+- Uses weighted scoring for measurement importance
+- Computes fit confidence scores
+- Returns the Top 3 best-fitting garments
+
+## Technologies
+
+- Python
+- NumPy
+
+## Output
+
+- Top 3 garment recommendations
+- Garment IDs
+- Fit confidence scores
 
 ### Scaling Strategy for Large Databases
 The prototype uses a linear scan, which is efficient for ~100 garments but not for millions.  
