@@ -50,7 +50,7 @@ This project implements a data sanitization system for user body measurements.
 - Validation issues
 - Estimated missing values
       
- **Question 3: Best-Fit Multi-Constraint Search Algorithm**
+**Question 3: Best-Fit Multi-Constraint Search Algorithm**
   This project implements a garment recommendation system that identifies the Top 3 best-fitting garments based on user body measurements.
 
 ## Features
